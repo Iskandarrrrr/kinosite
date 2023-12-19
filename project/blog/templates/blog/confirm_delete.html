@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="container d-flex justify-content-center ">
+    <div style="border-radius: 15px;" class="border-danger col-6 card p-4 m-4 text-light bg-dark">
+        <form method="post" action="">
+            {% csrf_token %}
+            <h5 class="text-center">Вы точно хотите удалить? "{{ article.title }}" 😞</h5>
+            <br>
+            <div class="d-flex justify-content-evenly p-2">
+            <input class="btn btn-danger btn-lg " type="submit" value="Да удалить!">
+            <a href="{% url 'article' article.id %}" class="btn btn-success btn-lg">Назад</a>
+                </div>
+        </form>
+    </div>
+</div>
+{% endblock main %}

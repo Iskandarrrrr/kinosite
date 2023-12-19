@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="container d-flex pt-5">
+    <div class="mt-3 mb-3">
+        <img class="rounded-5" src="{% static 'blog/images/ono.png' %}" width="500" height="500" alt="">
+    </div>
+    <div class="container mt-4 mb-4 col-3 text-light">
+        <h5 class="text-center">О филме</h5>
+        <h5 >«Оно́ 2» (англ. It Chapter Two) — американский фильм ужасов о сверхъестественном 2019 года, продолжение
+            фильма «Оно» (2017), основанные на одноимённом романе 1986 года Стивена Кинга. Режиссёр фильма — Энди
+            Мускетти, автор сценария — Гэри Доберман. В фильме снимались Джессика Честейн, Джеймс Макэвой, Билл Хейдер,
+            Айзая Мустафа, Джей Райан, Джеймс Рэнсон, Энди Бин и Билл Скарсгард.
+        </h5>
+    </div>
+</div>
+
+{% endblock main %}

@@ -1,0 +1,58 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        {% if not request.user.is_authenticated %}
+        <a class="navbar-brand" href="">
+            <img class="border border-danger" style="border-radius: 75px;" src="{% static 'blog/images/logoo.jpg' %}"
+                 alt="">
+        </a>
+        {% else %}
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img class="border border-danger" style="border-radius: 75px;" src="{% static 'blog/images/logoo.jpg' %}"
+                 alt="">
+        </a>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'about_us' %}">О нас</a>
+                </li>
+
+
+                {% if not request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="{% url 'register' %}">Регистрация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="{% url 'login' %}">Войти</a>
+                </li>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Привет {{ request.user.username }}
+                    </a>
+                    <ul class="dropdown-menu bg-dark ">
+                        <li><a class="dropdown-item text-light" href="{% url 'about_dev' %}">Моя страница</a></li>
+                        <li><a class="dropdown-item text-light" href="{% url 'add_article' %}">Добавить статью</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">Выход</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+            <form method="get" action="{% url 'search' %}" class="d-flex" role="search">
+                <input name="q" class="form-control me-2 bg-warning border-danger" type="search" placeholder="Поиск"
+                       aria-label="Поиск">
+                <button class="btn btn-outline-danger " type="submit">Поиск</button>
+            </form>
+        </div>
+    </div>
+</nav>
